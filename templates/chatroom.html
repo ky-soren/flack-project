@@ -11,40 +11,48 @@
         });
     </script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>Flack</title>
 
 
   </head>
   <body>
-    <h3 id="userID"></h3>
-    <ul id="room_list">
-      <h3>Rooms</h3>
-      {% for room in rooms %}
-      <li><a href="{{ room.room }}" id="{{ room.room }}" class="nav-link" data-page="{{ room.room }}">{{ room.room }}</a></li>
-      {% endfor %}
-    </ul>
-
-    <div>
-      <form id="new_room">
-        <input id="room_name" required type="text" autocomplete="off">
-        <button type="submit">Create Room</button>
-      </form>
+    <div class="container jumbotron">
+      <div>
+        <nav>
+          <div>
+            <h3 id="userID"></h3>
+              <form id="new_room">
+                <input id="room_name" required type="text" autocomplete="off">
+                <button type="submit">Create Room</button>
+              </form>
+              <h3>Rooms</h3>
+              <ul id="room_list">
+                {% for room in rooms %}
+                <li><a onclick="setCurrentRoom('{{ room.room }}')" href="{{ room.room }}" id="{{ room.room }}" data-page="{{ room.room }}">{{ room.room }}</a></li>
+                {% endfor %}
+              </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="room-view">
+        <h3 id="room_title">{{ joined_room.room }}</h3>
+        <ul id="message_log">
+          {% for message in joined_room.room_messages %}
+            <li class="messages">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <div class="message-view">
+          <form id="new_message">
+            <input id="message" required type="text" autocomplete="off">
+            <button type="submit" id="send_message">Send</button>
+          </form>
+        </div>
+      </div>
     </div>
 
 
-
-<div>
-  <h3 id="room_title">{{ joined_room.room }}</h3>
-  <ul id="message_log">
-    {% for message in joined_room.room_messages %}
-      <li class="messages">{{ message }}</li>
-      {% endfor %}
-  </ul>
-</div>
-  <form id="new_message">
-      <input id="message" required type="text" autocomplete="off">
-      <button type="submit" id="send_message">Send</button>
-  </form>
 
   </body>
 </html>
