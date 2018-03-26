@@ -2,9 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <!-- Connects to web socket -->
+    <script type="text/javascript" charset="utf-8">
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('connect', function() {
+              socket.emit('my event', {data: 'Connected'});
+        });
+    </script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <title>Flack</title>
+
+
   </head>
   <body>
+    <h3 id="userID"></h3>
+    <ul id="room_list">
+      <h3>Rooms</h3>
+      {% for room in rooms %}
+      <li><a href="{{ room.room }}" class="nav-link" data-page="{{ room.room }}">{{ room.room }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <div>
+      <form id="new_room">
+        <input id="room_name" required type="text" autocomplete="off">
+        <button type="submit">Create Room</button>
+      </form>
+    </div>
+
+
+
+<div>
+  <h3 id="room_title"></h3>
+  <ul id="message_log">
+
+  </ul>
+</div>
+
 
   </body>
 </html>
