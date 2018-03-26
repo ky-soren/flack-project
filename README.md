@@ -11,7 +11,11 @@ Upon exiting the web app, revisiting the web app will load the last page the use
 
 ### Personal Touch
 > Einstein once said, emojis are the truth to the universe.
-Therefore, my personal touch on the app consists of an array of ASCII emoticons and emojis in unicode. Each message sent is randomly assigned an art icon from the array as determined by the function ``Math.floor(Math.random() * emoticon.length);``
+
+Therefore, my personal touch on the app consists of an array of ASCII emoticons and emojis in unicode. Each message sent is randomly assigned an art icon from the array as determined by the function:
+``` 
+Math.floor(Math.random() * emoticon.length);
+```
   
 # Files
 
