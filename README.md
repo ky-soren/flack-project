@@ -3,9 +3,9 @@
 A simple chatroom app utilizing FlaskSocket and SocketIO.
 
 Users can:
-  -Create uniquely named chatrooms
-  -Message each other within the chatrooms
-  -Read up to 100 of the messages sent in each room
+  *Create uniquely named chatrooms
+  *Message each other within the chatrooms
+  *Read up to 100 of the messages sent in each room
   
 # Files
 
