@@ -17,6 +17,13 @@ Therefore, my personal touch on the app consists of an array of ASCII emoticons 
 Math.floor(Math.random() * emoticon.length);
 ```
   
+# Up and Running
+CD to the app folder and run the following:
+```
+EXPORT FLASK_APP=application.py
+```
+The app should now be running on your local host. Open multiple incognito windows to simulate multiple users.
+  
 # Files
 
 There are two html files, an index and a chatroom file. The index file lists the current rooms while the chatroom file mimics the index file but adds messaging functionality.
